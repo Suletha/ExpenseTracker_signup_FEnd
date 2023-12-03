@@ -14,12 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.status === 200) {
           // Login successful, redirect or show a success message
           console.log('Login successful');
-          window.location.href = 'exp_feature.html'; // Redirect to dashboard after successful login
+          window.location.href = '../ExpTrac/exp_feature.html'; // Redirect to dashboard after successful login
         } else {
           throw new Error('Login failed');
         }
       } catch (error) {
-        console.error('Error during login:', error);
+        console.log(JSON.stringify(err))
+        document.body.innerHTML += `<div style="color:red;">${err.message} <div>`;
         // Display an error message to the user or handle the error appropriately
       }
     });

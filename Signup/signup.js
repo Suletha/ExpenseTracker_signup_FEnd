@@ -16,12 +16,12 @@ document.querySelector('.signup.form .button').addEventListener('click', async f
         if (response.status === 201) {
             // Signup successful, perform actions like redirecting to login page or showing a success message
             console.log('Signup successful');
-            window.location.href = 'login.html'; // Redirect to login page after successful signup
+            window.location.href = '../Login/login.html'; // Redirect to login page after successful signup
         } else {
             throw new Error('Signup failed');
         }
     } catch (error) {
-        console.error('Error during signup:', error);
+        document.body.innerHTML += `<div style="color:red;">${err} <div>`;
         // Display an error message to the user or handle the error appropriately
     }
 });

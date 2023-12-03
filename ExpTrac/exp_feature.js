@@ -27,6 +27,7 @@ async function onSubmit(e) {
         desc: desc.value,
         cat: cat.value
       };
+      const token = localStorage.getItem('token')
 
       const response = await axios.post('http://localhost:3000/expenses', newDetails);
 

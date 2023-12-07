@@ -333,38 +333,38 @@ showfilesBtn.addEventListener("click", async () => {
     });
 
 //     // Add previous and next buttons for pagination
-//     fileTableContainer.classList.add("pagination");
+    fileTableContainer.classList.add("pagination");
 
-//     const prevButton = document.createElement("button");
-//     prevButton.textContent = "Previous";
-//     prevButton.classList.add("btn", "btn-secondary", "btn-sm");
-//     prevButton.disabled = currentPage === 1;
-//     prevButton.addEventListener("click", () => {
-//       if (currentPage > 1) {
-//         currentPage--;
-//         updateFilesTable();
-//       }
-//     });
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "Previous";
+    prevButton.classList.add("btn", "btn-secondary", "btn-sm");
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updateFilesTable();
+      }
+    });
 
-//     const nextButton = document.createElement("button");
-//     nextButton.textContent = "Next";
-//     nextButton.classList.add("btn", "btn-secondary", "btn-sm");
-//     nextButton.disabled = files.length < 5; // Assuming 5 files per page
-//     nextButton.addEventListener("click", () => {
-//       currentPage++;
-//       updateFilesTable();
-//     });
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Next";
+    nextButton.classList.add("btn", "btn-secondary", "btn-sm");
+    nextButton.disabled = files.length < 5; // Assuming 5 files per page
+    nextButton.addEventListener("click", () => {
+      currentPage++;
+      updateFilesTable();
+    });
 
-//     fileTableContainer.appendChild(prevButton);
-//     fileTableContainer.appendChild(nextButton);
-//     const hr = document.createElement("hr");
-//     fileTableContainer.parentNode.insertBefore(hr, fileTableContainer);
-//     fileTableContainer.style.display = "block";
-//     fileTableContainer.style.paddingLeft = "2rem";
-//   } catch (error) {
-//     console.error("Error fetching files:", error);
-//   }
-// });
+    fileTableContainer.appendChild(prevButton);
+    fileTableContainer.appendChild(nextButton);
+    const hr = document.createElement("hr");
+    fileTableContainer.parentNode.insertBefore(hr, fileTableContainer);
+    fileTableContainer.style.display = "block";
+    fileTableContainer.style.paddingLeft = "2rem";
+  } catch (error) {
+    console.error("Error fetching files:", error);
+  }
+});
 
 // async function updateFilesTable() {
 //   try {
@@ -419,37 +419,37 @@ showfilesBtn.addEventListener("click", async () => {
 //     });
 
 //     // Add previous and next buttons for pagination
-//     fileTableContainer.classList.add("pagination");
+    fileTableContainer.classList.add("pagination");
 
-//     const prevButton = document.createElement("button");
-//     prevButton.textContent = "Previous";
-//     prevButton.classList.add("btn", "btn-secondary", "btn-sm");
-//     prevButton.disabled = currentPage === 1;
-//     prevButton.addEventListener("click", () => {
-//       if (currentPage > 1) {
-//         currentPage--;
-//         updateFilesTable();
-//       }
-//     });
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "Previous";
+    prevButton.classList.add("btn", "btn-secondary", "btn-sm");
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updateFilesTable();
+      }
+    });
 
-//     const nextButton = document.createElement("button");
-//     nextButton.textContent = "Next";
-//     nextButton.classList.add("btn", "btn-secondary", "btn-sm");
-//     nextButton.disabled = files.length < 5; // Assuming 10 files per page
-//     nextButton.addEventListener("click", () => {
-//       currentPage++;
-//       updateFilesTable();
-//     });
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "Next";
+    nextButton.classList.add("btn", "btn-secondary", "btn-sm");
+    nextButton.disabled = files.length < 5; // Assuming 10 files per page
+    nextButton.addEventListener("click", () => {
+      currentPage++;
+      updateFilesTable();
+    });
 
-//     // Update pagination buttons
-//     prevButton.disabled = currentPage === 1;
-//     nextButton.disabled = files.length < 5;
+    // Update pagination buttons
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = files.length < 5;
 
-//     fileTableContainer.appendChild(prevButton);
-//     fileTableContainer.appendChild(nextButton);
-//     fileTableContainer.style.display = "block";
-//     fileTableContainer.style.paddingLeft = "2rem";
-//   } catch (error) {
-//     console.error("Error fetching files:", error);
-//   }
-// }
+    fileTableContainer.appendChild(prevButton);
+    fileTableContainer.appendChild(nextButton);
+    fileTableContainer.style.display = "block";
+    fileTableContainer.style.paddingLeft = "2rem";
+  } catch (error) {
+    console.error("Error fetching files:", error);
+  }
+}

@@ -164,58 +164,58 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
-// //payments function implementation
-// async function payments(e) {
-//   const response = await axios.get(
-//     "http://localhost:4000/purchase/premiummembership"
-//   );
-//   console.log(response);
-//   var options = {
-//     key: response.data.key_id,
-//     order_id: response.data.order.id,
-//     handler: async function (response) {
-//       await axios.post(
-//         "http://localhost:4000/purchase/updatetransactionstatus",
-//         {
-//           order_id: options.order_id,
-//           payment_id: response.razorpay_payment_id,
-//         }
-//       );
-//       alert("you are a premium user now");
-//       premiumUser.innerHTML = "<span>You are premium user now</span>";
-//       getPremiumStatus();
-//       window.location.reload();
-//     },
-//     modal: {
-//       ondismiss: async function () {
-//         console.log("Payment failed or dismissed");
-//         alert("Payment failed or dismissed");
-//         await axios.post(
-//           "http://localhost:4000/purchase/failedtransactionstatus",
-//           {
-//             order_id: options.order_id,
-//           }
-//         );
-//       },
-//     },
-//   };
-//   const rzpl = new Razorpay(options);
-//   rzpl.open();
-//   e.preventDefault();
+//payments function implementation
+async function payments(e) {
+  const response = await axios.get(
+    "http://localhost:4000/purchase/premiummembership"
+  );
+  console.log(response);
+  var options = {
+    key: response.data.key_id,
+    order_id: response.data.order.id,
+    handler: async function (response) {
+      await axios.post(
+        "http://localhost:4000/purchase/updatetransactionstatus",
+        {
+          order_id: options.order_id,
+          payment_id: response.razorpay_payment_id,
+        }
+      );
+      alert("you are a premium user now");
+      premiumUser.innerHTML = "<span>You are premium user now</span>";
+      getPremiumStatus();
+      window.location.reload();
+    },
+    modal: {
+      ondismiss: async function () {
+        console.log("Payment failed or dismissed");
+        alert("Payment failed or dismissed");
+        await axios.post(
+          "http://localhost:4000/purchase/failedtransactionstatus",
+          {
+            order_id: options.order_id,
+          }
+        );
+      },
+    },
+  };
+  const rzpl = new Razorpay(options);
+  rzpl.open();
+  e.preventDefault();
 
-//   rzpl.on("payment.failed", function (response) {
-//     console.log(response);
-//     alert("Something went wrong");
-//   });
-// }
+  rzpl.on("payment.failed", function (response) {
+    console.log(response);
+    alert("Something went wrong");
+  });
+}
 
-// //logout function
-// function logout() {
-//   axios.defaults.headers.common["Authorization"] = `${token}`;
-//   localStorage.removeItem("token");
-//   alert("You are logged out successfully");
-//   window.location.href = "login.html";
-// }
+//logout function
+function logout() {
+  axios.defaults.headers.common["Authorization"] = `${token}`;
+  localStorage.removeItem("token");
+  alert("You are logged out successfully");
+  window.location.href = "login.html";
+}
 
 async function leaderBoard() {
   try {

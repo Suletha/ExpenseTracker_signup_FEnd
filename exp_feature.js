@@ -217,36 +217,36 @@ document.addEventListener("DOMContentLoaded", async () => {
 //   window.location.href = "login.html";
 // }
 
-// async function leaderBoard() {
-//   try {
-//     const response = await axios.get(
-//       "http://localhost:4000/purchase/getleaderboard"
-//     );
-//     const userExpenses = response.data;
-//     console.log(userExpenses);
-//     const leaderBoardList = document.querySelector("#leaderBoard");
-//     const hr = document.createElement("hr");
-//     leaderBoardList.parentNode.parentNode.insertBefore(
-//       hr,
-//       leaderBoardList.parentNode
-//     );
-//     leaderBoardList.innerHTML = "";
-//     for (let i = 0; i < userExpenses.length; i++)
-//       showLeaderBoard(leaderBoardList, userExpenses[i]);
-//   } catch (error) {
-//     console.error("Error fetching user expenses:", error);
-//   }
-// }
+async function leaderBoard() {
+  try {
+    const response = await axios.get(
+      "http://localhost:4000/purchase/getleaderboard"
+    );
+    const userExpenses = response.data;
+    console.log(userExpenses);
+    const leaderBoardList = document.querySelector("#leaderBoard");
+    const hr = document.createElement("hr");
+    leaderBoardList.parentNode.parentNode.insertBefore(
+      hr,
+      leaderBoardList.parentNode
+    );
+    leaderBoardList.innerHTML = "";
+    for (let i = 0; i < userExpenses.length; i++)
+      showLeaderBoard(leaderBoardList, userExpenses[i]);
+  } catch (error) {
+    console.error("Error fetching user expenses:", error);
+  }
+ }
 
-// function showLeaderBoard(leaderBoardList, userExpense) {
-//   const li = document.createElement("li");
-//   li.appendChild(
-//     document.createTextNode(
-//       `Name - ${userExpense.name} -- Total Expenses - ${userExpense.totalExpense}`
-//     )
-//   );
-//   leaderBoardList.appendChild(li);
-// }
+function showLeaderBoard(leaderBoardList, userExpense) {
+  const li = document.createElement("li");
+  li.appendChild(
+    document.createTextNode(
+      `Name - ${userExpense.name} -- Total Expenses - ${userExpense.totalExpense}`
+    )
+  );
+  leaderBoardList.appendChild(li);
+}
 
 // async function download() {
 //   try {

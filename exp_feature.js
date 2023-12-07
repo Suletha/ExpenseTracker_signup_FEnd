@@ -248,23 +248,23 @@ function showLeaderBoard(leaderBoardList, userExpense) {
   leaderBoardList.appendChild(li);
 }
 
-// async function download() {
-//   try {
-//     const response = await axios.get("http://localhost:4000/users/download");
-//     if (response.status === 200) {
-//       // The backend is sending a download link
-//       // which if we open in the browser, the file would download
-//       const a = document.createElement("a");
-//       a.href = response.data.fileUrl;
-//       a.download = "myexpense.csv";
-//       a.click();
-//     } else {
-//       throw new Error(response.data.error);
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+async function download() {
+  try {
+    const response = await axios.get("http://localhost:4000/users/download");
+    if (response.status === 200) {
+      // The backend is sending a download link
+      // which if we open in the browser, the file would download
+      const a = document.createElement("a");
+      a.href = response.data.fileUrl;
+      a.download = "myexpense.csv";
+      a.click();
+    } else {
+      throw new Error(response.data.error);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 // // showfilesBtn.addEventListener("click", async () => {
 // //   try {
@@ -276,61 +276,61 @@ function showLeaderBoard(leaderBoardList, userExpense) {
 // //   }
 // // });
 
-// let currentPage = 1; // Initialize current page
+let currentPage = 1; // Initialize current page
 
-// showfilesBtn.addEventListener("click", async () => {
-//   try {
-//     const response = await axios.get(
-//       `http://localhost:4000/users/getfiles?page=${currentPage}`
-//     );
-//     const files = response.data.files;
-//     const count = response.data.totalFiles;
-//     console.log(files, count);
-//     const childCount = fileTableContainer.children.length;
-//     if (childCount == 3) {
-//       let i = 2;
-//       while (i != 0) {
-//         const lastChild = fileTableContainer.lastElementChild;
-//         if (lastChild) {
-//           // Remove the last child element
-//           fileTableContainer.removeChild(lastChild);
-//         }
-//         i--;
-//       }
-//     }
+showfilesBtn.addEventListener("click", async () => {
+  try {
+    const response = await axios.get(
+      `http://localhost:4000/users/getfiles?page=${currentPage}`
+    );
+    const files = response.data.files;
+    const count = response.data.totalFiles;
+    console.log(files, count);
+    const childCount = fileTableContainer.children.length;
+    if (childCount == 3) {
+      let i = 2;
+      while (i != 0) {
+        const lastChild = fileTableContainer.lastElementChild;
+        if (lastChild) {
+          // Remove the last child element
+          fileTableContainer.removeChild(lastChild);
+        }
+        i--;
+      }
+    }
 
-//     const tableBody = document.getElementById("fileTableBody");
-//     tableBody.innerHTML = "";
+    const tableBody = document.getElementById("fileTableBody");
+    tableBody.innerHTML = "";
 
-//     files.forEach((file) => {
-//       const row = document.createElement("tr");
-//       const idCell = document.createElement("td");
-//       const downloadCell = document.createElement("td");
-//       const downloadButton = document.createElement("button");
+    files.forEach((file) => {
+      const row = document.createElement("tr");
+      const idCell = document.createElement("td");
+      const downloadCell = document.createElement("td");
+      const downloadButton = document.createElement("button");
 
-//       idCell.textContent = file.id;
-//       idCell.classList.add("align-middle"); // Add Bootstrap class for vertical alignment
+      idCell.textContent = file.id;
+      idCell.classList.add("align-middle"); // Add Bootstrap class for vertical alignment
 
-//       // Create a Bootstrap-styled button
-//       downloadButton.textContent = "Download";
-//       downloadButton.classList.add("btn", "btn-primary", "btn-sm"); // Add Bootstrap button classes
+      // Create a Bootstrap-styled button
+      downloadButton.textContent = "Download";
+      downloadButton.classList.add("btn", "btn-primary", "btn-sm"); // Add Bootstrap button classes
 
-//       // Create an anchor element for download
-//       const downloadLink = document.createElement("a");
-//       downloadLink.href = file.location;
-//       downloadLink.download = "myexpense.csv";
-//       downloadLink.textContent = "Download";
-//       downloadLink.classList.add("btn", "btn-success", "btn-sm"); // Add Bootstrap button classes
+      // Create an anchor element for download
+      const downloadLink = document.createElement("a");
+      downloadLink.href = file.location;
+      downloadLink.download = "myexpense.csv";
+      downloadLink.textContent = "Download";
+      downloadLink.classList.add("btn", "btn-success", "btn-sm"); // Add Bootstrap button classes
 
-//       downloadButton.addEventListener("click", (event) => {
-//         downloadLink.click();
-//       });
+      downloadButton.addEventListener("click", (event) => {
+        downloadLink.click();
+      });
 
-//       downloadCell.appendChild(downloadButton);
-//       row.appendChild(idCell);
-//       row.appendChild(downloadCell);
-//       tableBody.appendChild(row);
-//     });
+      downloadCell.appendChild(downloadButton);
+      row.appendChild(idCell);
+      row.appendChild(downloadCell);
+      tableBody.appendChild(row);
+    });
 
 //     // Add previous and next buttons for pagination
 //     fileTableContainer.classList.add("pagination");

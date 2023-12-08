@@ -366,57 +366,57 @@ showfilesBtn.addEventListener("click", async () => {
   }
 });
 
-// async function updateFilesTable() {
-//   try {
-//     const response = await axios.get(
-//       `http://localhost:4000/users/getfiles?page=${currentPage}`
-//     );
-//     const files = response.data.files;
-//     console.log(files);
+async function updateFilesTable() {
+  try {
+    const response = await axios.get(
+      `http://localhost:4000/users/getfiles?page=${currentPage}`
+    );
+    const files = response.data.files;
+    console.log(files);
 
-//     let i = 2;
-//     while (i != 0) {
-//       const lastChild = fileTableContainer.lastElementChild;
-//       if (lastChild) {
-//         // Remove the last child element
-//         fileTableContainer.removeChild(lastChild);
-//       }
-//       i--;
-//     }
+    let i = 2;
+    while (i != 0) {
+      const lastChild = fileTableContainer.lastElementChild;
+      if (lastChild) {
+        // Remove the last child element
+        fileTableContainer.removeChild(lastChild);
+      }
+      i--;
+    }
 
-//     // Clear previous table and populate with new files
-//     const tableBody = document.getElementById("fileTableBody");
-//     tableBody.innerHTML = "";
+    // Clear previous table and populate with new files
+    const tableBody = document.getElementById("fileTableBody");
+    tableBody.innerHTML = "";
 
-//     files.forEach((file) => {
-//       const row = document.createElement("tr");
-//       const idCell = document.createElement("td");
-//       const downloadCell = document.createElement("td");
-//       const downloadButton = document.createElement("button");
+    files.forEach((file) => {
+      const row = document.createElement("tr");
+      const idCell = document.createElement("td");
+      const downloadCell = document.createElement("td");
+      const downloadButton = document.createElement("button");
 
-//       idCell.textContent = file.id;
-//       idCell.classList.add("align-middle"); // Add Bootstrap class for vertical alignment
+      idCell.textContent = file.id;
+      idCell.classList.add("align-middle"); // Add Bootstrap class for vertical alignment
 
-//       // Create a Bootstrap-styled button
-//       downloadButton.textContent = "Download";
-//       downloadButton.classList.add("btn", "btn-primary", "btn-sm"); // Add Bootstrap button classes
+      // Create a Bootstrap-styled button
+      downloadButton.textContent = "Download";
+      downloadButton.classList.add("btn", "btn-primary", "btn-sm"); // Add Bootstrap button classes
 
-//       // Create an anchor element for download
-//       const downloadLink = document.createElement("a");
-//       downloadLink.href = file.location;
-//       downloadLink.download = "myexpense.csv";
-//       downloadLink.textContent = "Download";
-//       downloadLink.classList.add("btn", "btn-success", "btn-sm"); // Add Bootstrap button classes
+      // Create an anchor element for download
+      const downloadLink = document.createElement("a");
+      downloadLink.href = file.location;
+      downloadLink.download = "myexpense.csv";
+      downloadLink.textContent = "Download";
+      downloadLink.classList.add("btn", "btn-success", "btn-sm"); // Add Bootstrap button classes
 
-//       downloadButton.addEventListener("click", (event) => {
-//         downloadLink.click();
-//       });
+      downloadButton.addEventListener("click", (event) => {
+        downloadLink.click();
+      });
 
-//       downloadCell.appendChild(downloadButton);
-//       row.appendChild(idCell);
-//       row.appendChild(downloadCell);
-//       tableBody.appendChild(row);
-//     });
+      downloadCell.appendChild(downloadButton);
+      row.appendChild(idCell);
+      row.appendChild(downloadCell);
+      tableBody.appendChild(row);
+    });
 
 //     // Add previous and next buttons for pagination
     fileTableContainer.classList.add("pagination");
